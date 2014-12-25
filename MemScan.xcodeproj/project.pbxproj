@@ -11,18 +11,7 @@
 		D81E2FDE1A4CB6010005837E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E2FDD1A4CB6010005837E /* main.m */; };
 		D81E2FE01A4CB6010005837E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D81E2FDF1A4CB6010005837E /* Images.xcassets */; };
 		D81E2FE31A4CB6010005837E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D81E2FE11A4CB6010005837E /* MainMenu.xib */; };
-		D81E2FEF1A4CB6010005837E /* MemScanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E2FEE1A4CB6010005837E /* MemScanTests.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		D81E2FE91A4CB6010005837E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D81E2FCD1A4CB6010005837E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D81E2FD41A4CB6010005837E;
-			remoteInfo = MemScan;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		D81E2FD51A4CB6010005837E /* MemScan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemScan.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -32,20 +21,10 @@
 		D81E2FDD1A4CB6010005837E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D81E2FDF1A4CB6010005837E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D81E2FE21A4CB6010005837E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		D81E2FE81A4CB6010005837E /* MemScanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemScanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D81E2FED1A4CB6010005837E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D81E2FEE1A4CB6010005837E /* MemScanTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemScanTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		D81E2FD21A4CB6010005837E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D81E2FE51A4CB6010005837E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -59,7 +38,6 @@
 			isa = PBXGroup;
 			children = (
 				D81E2FD71A4CB6010005837E /* MemScan */,
-				D81E2FEB1A4CB6010005837E /* MemScanTests */,
 				D81E2FD61A4CB6010005837E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,7 +46,6 @@
 			isa = PBXGroup;
 			children = (
 				D81E2FD51A4CB6010005837E /* MemScan.app */,
-				D81E2FE81A4CB6010005837E /* MemScanTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -94,23 +71,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		D81E2FEB1A4CB6010005837E /* MemScanTests */ = {
-			isa = PBXGroup;
-			children = (
-				D81E2FEE1A4CB6010005837E /* MemScanTests.m */,
-				D81E2FEC1A4CB6010005837E /* Supporting Files */,
-			);
-			path = MemScanTests;
-			sourceTree = "<group>";
-		};
-		D81E2FEC1A4CB6010005837E /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				D81E2FED1A4CB6010005837E /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -131,24 +91,6 @@
 			productReference = D81E2FD51A4CB6010005837E /* MemScan.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D81E2FE71A4CB6010005837E /* MemScanTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D81E2FF51A4CB6010005837E /* Build configuration list for PBXNativeTarget "MemScanTests" */;
-			buildPhases = (
-				D81E2FE41A4CB6010005837E /* Sources */,
-				D81E2FE51A4CB6010005837E /* Frameworks */,
-				D81E2FE61A4CB6010005837E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D81E2FEA1A4CB6010005837E /* PBXTargetDependency */,
-			);
-			name = MemScanTests;
-			productName = MemScanTests;
-			productReference = D81E2FE81A4CB6010005837E /* MemScanTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -160,10 +102,6 @@
 				TargetAttributes = {
 					D81E2FD41A4CB6010005837E = {
 						CreatedOnToolsVersion = 6.1.1;
-					};
-					D81E2FE71A4CB6010005837E = {
-						CreatedOnToolsVersion = 6.1.1;
-						TestTargetID = D81E2FD41A4CB6010005837E;
 					};
 				};
 			};
@@ -181,7 +119,6 @@
 			projectRoot = "";
 			targets = (
 				D81E2FD41A4CB6010005837E /* MemScan */,
-				D81E2FE71A4CB6010005837E /* MemScanTests */,
 			);
 		};
 /* End PBXProject section */
@@ -193,13 +130,6 @@
 			files = (
 				D81E2FE01A4CB6010005837E /* Images.xcassets in Resources */,
 				D81E2FE31A4CB6010005837E /* MainMenu.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D81E2FE61A4CB6010005837E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,23 +145,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D81E2FE41A4CB6010005837E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D81E2FEF1A4CB6010005837E /* MemScanTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		D81E2FEA1A4CB6010005837E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D81E2FD41A4CB6010005837E /* MemScan */;
-			targetProxy = D81E2FE91A4CB6010005837E /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D81E2FE11A4CB6010005837E /* MainMenu.xib */ = {
@@ -343,42 +257,6 @@
 			};
 			name = Release;
 		};
-		D81E2FF61A4CB6010005837E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = MemScanTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MemScan.app/Contents/MacOS/MemScan";
-			};
-			name = Debug;
-		};
-		D81E2FF71A4CB6010005837E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = MemScanTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MemScan.app/Contents/MacOS/MemScan";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -396,14 +274,6 @@
 			buildConfigurations = (
 				D81E2FF31A4CB6010005837E /* Debug */,
 				D81E2FF41A4CB6010005837E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
-		D81E2FF51A4CB6010005837E /* Build configuration list for PBXNativeTarget "MemScanTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D81E2FF61A4CB6010005837E /* Debug */,
-				D81E2FF71A4CB6010005837E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

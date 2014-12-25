@@ -1,0 +1,413 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D81E2FDC1A4CB6010005837E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E2FDB1A4CB6010005837E /* AppDelegate.m */; };
+		D81E2FDE1A4CB6010005837E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E2FDD1A4CB6010005837E /* main.m */; };
+		D81E2FE01A4CB6010005837E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D81E2FDF1A4CB6010005837E /* Images.xcassets */; };
+		D81E2FE31A4CB6010005837E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D81E2FE11A4CB6010005837E /* MainMenu.xib */; };
+		D81E2FEF1A4CB6010005837E /* MemScanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E2FEE1A4CB6010005837E /* MemScanTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D81E2FE91A4CB6010005837E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D81E2FCD1A4CB6010005837E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D81E2FD41A4CB6010005837E;
+			remoteInfo = MemScan;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D81E2FD51A4CB6010005837E /* MemScan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemScan.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D81E2FD91A4CB6010005837E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D81E2FDA1A4CB6010005837E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D81E2FDB1A4CB6010005837E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D81E2FDD1A4CB6010005837E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D81E2FDF1A4CB6010005837E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D81E2FE21A4CB6010005837E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		D81E2FE81A4CB6010005837E /* MemScanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemScanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D81E2FED1A4CB6010005837E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D81E2FEE1A4CB6010005837E /* MemScanTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemScanTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D81E2FD21A4CB6010005837E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D81E2FE51A4CB6010005837E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D81E2FCC1A4CB6010005837E = {
+			isa = PBXGroup;
+			children = (
+				D81E2FD71A4CB6010005837E /* MemScan */,
+				D81E2FEB1A4CB6010005837E /* MemScanTests */,
+				D81E2FD61A4CB6010005837E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D81E2FD61A4CB6010005837E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D81E2FD51A4CB6010005837E /* MemScan.app */,
+				D81E2FE81A4CB6010005837E /* MemScanTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D81E2FD71A4CB6010005837E /* MemScan */ = {
+			isa = PBXGroup;
+			children = (
+				D81E2FDA1A4CB6010005837E /* AppDelegate.h */,
+				D81E2FDB1A4CB6010005837E /* AppDelegate.m */,
+				D81E2FDF1A4CB6010005837E /* Images.xcassets */,
+				D81E2FE11A4CB6010005837E /* MainMenu.xib */,
+				D81E2FD81A4CB6010005837E /* Supporting Files */,
+			);
+			path = MemScan;
+			sourceTree = "<group>";
+		};
+		D81E2FD81A4CB6010005837E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D81E2FD91A4CB6010005837E /* Info.plist */,
+				D81E2FDD1A4CB6010005837E /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D81E2FEB1A4CB6010005837E /* MemScanTests */ = {
+			isa = PBXGroup;
+			children = (
+				D81E2FEE1A4CB6010005837E /* MemScanTests.m */,
+				D81E2FEC1A4CB6010005837E /* Supporting Files */,
+			);
+			path = MemScanTests;
+			sourceTree = "<group>";
+		};
+		D81E2FEC1A4CB6010005837E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D81E2FED1A4CB6010005837E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D81E2FD41A4CB6010005837E /* MemScan */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D81E2FF21A4CB6010005837E /* Build configuration list for PBXNativeTarget "MemScan" */;
+			buildPhases = (
+				D81E2FD11A4CB6010005837E /* Sources */,
+				D81E2FD21A4CB6010005837E /* Frameworks */,
+				D81E2FD31A4CB6010005837E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MemScan;
+			productName = MemScan;
+			productReference = D81E2FD51A4CB6010005837E /* MemScan.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D81E2FE71A4CB6010005837E /* MemScanTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D81E2FF51A4CB6010005837E /* Build configuration list for PBXNativeTarget "MemScanTests" */;
+			buildPhases = (
+				D81E2FE41A4CB6010005837E /* Sources */,
+				D81E2FE51A4CB6010005837E /* Frameworks */,
+				D81E2FE61A4CB6010005837E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D81E2FEA1A4CB6010005837E /* PBXTargetDependency */,
+			);
+			name = MemScanTests;
+			productName = MemScanTests;
+			productReference = D81E2FE81A4CB6010005837E /* MemScanTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D81E2FCD1A4CB6010005837E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Joe Savage";
+				TargetAttributes = {
+					D81E2FD41A4CB6010005837E = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					D81E2FE71A4CB6010005837E = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = D81E2FD41A4CB6010005837E;
+					};
+				};
+			};
+			buildConfigurationList = D81E2FD01A4CB6010005837E /* Build configuration list for PBXProject "MemScan" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D81E2FCC1A4CB6010005837E;
+			productRefGroup = D81E2FD61A4CB6010005837E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D81E2FD41A4CB6010005837E /* MemScan */,
+				D81E2FE71A4CB6010005837E /* MemScanTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D81E2FD31A4CB6010005837E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D81E2FE01A4CB6010005837E /* Images.xcassets in Resources */,
+				D81E2FE31A4CB6010005837E /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D81E2FE61A4CB6010005837E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D81E2FD11A4CB6010005837E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D81E2FDE1A4CB6010005837E /* main.m in Sources */,
+				D81E2FDC1A4CB6010005837E /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D81E2FE41A4CB6010005837E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D81E2FEF1A4CB6010005837E /* MemScanTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D81E2FEA1A4CB6010005837E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D81E2FD41A4CB6010005837E /* MemScan */;
+			targetProxy = D81E2FE91A4CB6010005837E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D81E2FE11A4CB6010005837E /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D81E2FE21A4CB6010005837E /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D81E2FF01A4CB6010005837E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		D81E2FF11A4CB6010005837E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		D81E2FF31A4CB6010005837E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = MemScan/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D81E2FF41A4CB6010005837E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = MemScan/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		D81E2FF61A4CB6010005837E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MemScanTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MemScan.app/Contents/MacOS/MemScan";
+			};
+			name = Debug;
+		};
+		D81E2FF71A4CB6010005837E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MemScanTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MemScan.app/Contents/MacOS/MemScan";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D81E2FD01A4CB6010005837E /* Build configuration list for PBXProject "MemScan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D81E2FF01A4CB6010005837E /* Debug */,
+				D81E2FF11A4CB6010005837E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D81E2FF21A4CB6010005837E /* Build configuration list for PBXNativeTarget "MemScan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D81E2FF31A4CB6010005837E /* Debug */,
+				D81E2FF41A4CB6010005837E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D81E2FF51A4CB6010005837E /* Build configuration list for PBXNativeTarget "MemScanTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D81E2FF61A4CB6010005837E /* Debug */,
+				D81E2FF71A4CB6010005837E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D81E2FCD1A4CB6010005837E /* Project object */;
+}

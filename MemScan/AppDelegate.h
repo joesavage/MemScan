@@ -8,8 +8,17 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@class ProcessSelectionWindowController;
+@class ScannerWindowController;
 
+@interface AppDelegate : NSObject <NSApplicationDelegate>
+{
+    ProcessSelectionWindowController *_processSelectionWindowController;
+}
+
+- (void) applicationDidFinishLaunching:(NSNotification *)notification;
+- (void) applicationWillTerminate:(NSNotification *)notification;
+- (BOOL) applicationShouldHandleReopen:(NSApplication *)application hasVisibleWindows:(BOOL)hasVisibleWindows;
 
 @end
 

@@ -11,6 +11,10 @@
 		D81E2FDE1A4CB6010005837E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E2FDD1A4CB6010005837E /* main.m */; };
 		D81E2FE01A4CB6010005837E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D81E2FDF1A4CB6010005837E /* Images.xcassets */; };
 		D81E2FE31A4CB6010005837E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D81E2FE11A4CB6010005837E /* MainMenu.xib */; };
+		D8A1B0881A5067B4009BA297 /* ProcessSelectionWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8A1B0871A5067B4009BA297 /* ProcessSelectionWindow.xib */; };
+		D8A1B08A1A5067C3009BA297 /* ScannerWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8A1B0891A5067C3009BA297 /* ScannerWindow.xib */; };
+		D8A1B08D1A506C56009BA297 /* ProcessSelectionWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8A1B08C1A506C56009BA297 /* ProcessSelectionWindowController.m */; };
+		D8A1B0901A506CAC009BA297 /* ScannerWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8A1B08F1A506CAC009BA297 /* ScannerWindowController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +25,12 @@
 		D81E2FDD1A4CB6010005837E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D81E2FDF1A4CB6010005837E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D81E2FE21A4CB6010005837E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		D8A1B0871A5067B4009BA297 /* ProcessSelectionWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProcessSelectionWindow.xib; path = ../ProcessSelectionWindow.xib; sourceTree = "<group>"; };
+		D8A1B0891A5067C3009BA297 /* ScannerWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScannerWindow.xib; sourceTree = "<group>"; };
+		D8A1B08B1A506C56009BA297 /* ProcessSelectionWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcessSelectionWindowController.h; sourceTree = "<group>"; };
+		D8A1B08C1A506C56009BA297 /* ProcessSelectionWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcessSelectionWindowController.m; sourceTree = "<group>"; };
+		D8A1B08E1A506CAC009BA297 /* ScannerWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScannerWindowController.h; sourceTree = "<group>"; };
+		D8A1B08F1A506CAC009BA297 /* ScannerWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScannerWindowController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,8 +66,12 @@
 				D81E2FDA1A4CB6010005837E /* AppDelegate.h */,
 				D81E2FDB1A4CB6010005837E /* AppDelegate.m */,
 				D81E2FDF1A4CB6010005837E /* Images.xcassets */,
-				D81E2FE11A4CB6010005837E /* MainMenu.xib */,
+				D8A1B0841A506751009BA297 /* Nibs */,
 				D81E2FD81A4CB6010005837E /* Supporting Files */,
+				D8A1B08B1A506C56009BA297 /* ProcessSelectionWindowController.h */,
+				D8A1B08C1A506C56009BA297 /* ProcessSelectionWindowController.m */,
+				D8A1B08E1A506CAC009BA297 /* ScannerWindowController.h */,
+				D8A1B08F1A506CAC009BA297 /* ScannerWindowController.m */,
 			);
 			path = MemScan;
 			sourceTree = "<group>";
@@ -69,6 +83,16 @@
 				D81E2FDD1A4CB6010005837E /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D8A1B0841A506751009BA297 /* Nibs */ = {
+			isa = PBXGroup;
+			children = (
+				D8A1B0871A5067B4009BA297 /* ProcessSelectionWindow.xib */,
+				D81E2FE11A4CB6010005837E /* MainMenu.xib */,
+				D8A1B0891A5067C3009BA297 /* ScannerWindow.xib */,
+			);
+			name = Nibs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +152,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8A1B08A1A5067C3009BA297 /* ScannerWindow.xib in Resources */,
+				D8A1B0881A5067B4009BA297 /* ProcessSelectionWindow.xib in Resources */,
 				D81E2FE01A4CB6010005837E /* Images.xcassets in Resources */,
 				D81E2FE31A4CB6010005837E /* MainMenu.xib in Resources */,
 			);
@@ -140,7 +166,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8A1B08D1A506C56009BA297 /* ProcessSelectionWindowController.m in Sources */,
 				D81E2FDE1A4CB6010005837E /* main.m in Sources */,
+				D8A1B0901A506CAC009BA297 /* ScannerWindowController.m in Sources */,
 				D81E2FDC1A4CB6010005837E /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -166,7 +194,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -207,7 +235,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -276,6 +304,7 @@
 				D81E2FF41A4CB6010005837E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

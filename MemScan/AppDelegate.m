@@ -7,20 +7,25 @@
 //
 
 #import "AppDelegate.h"
-
-@interface AppDelegate ()
-
-@property (weak) IBOutlet NSWindow *window;
-@end
+#import "ProcessSelectionWindowController.h"
+#import "ScannerWindowController.h"
 
 @implementation AppDelegate
 
+- (BOOL) applicationShouldHandleReopen:(NSApplication *)application hasVisibleWindows:(BOOL)hasVisibleWindows {
+    if (!hasVisibleWindows)
+        [_processSelectionWindowController initiateWindowAction];
+    return YES;
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    // Insert code here to initialize your application
+    _processSelectionWindowController = [[ProcessSelectionWindowController alloc] init];
+    [_processSelectionWindowController initiateWindowAction];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
-    // Insert code here to tear down your application
+    [_processSelectionWindowController release];
+    _processSelectionWindowController = nil;
 }
 
 @end

@@ -8,14 +8,24 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface ProcessSelectionWindowController : NSWindowController
+@interface ProcessSelectionWindowController : NSWindowController <NSTableViewDelegate, NSTableViewDataSource>
 {
-    
+             NSArray     *_processes;
+    IBOutlet NSButton    *_selectButton;
+    IBOutlet NSButton    *_refreshButton;
+    IBOutlet NSTableView *_processTableView;
 }
 
 - (id) init;
 - (void) dealloc;
 
 - (void) initiateWindowAction;
+- (void) windowDidLoad;
+- (void) windowWillClose:(NSNotification *)notification;
+
+- (IBAction) reloadProcessTableData:(id)sender;
+
+- (NSView *) tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
+- (NSInteger) numberOfRowsInTableView:(NSTableView *)tableView;
 
 @end

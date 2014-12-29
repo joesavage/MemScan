@@ -63,6 +63,12 @@
             else
                 processName = processPath;
             
+            // Possibly useful extra information:
+            //   Start time: processInfo[i].kp_proc.p_un.__p_starttime.tv_sec
+            //   Priority: processInfo[i].kp_proc.p_priority
+            //   Parent PID: processInfo[i].kp_eproc.e_ppid
+            //   Group ID: processInfo[i].kp_eproc.e_pgid
+            
             uid_t uid = processInfo[i].kp_eproc.e_pcred.p_ruid;
             char *uname = getpwuid(uid)->pw_name;
             NSString *name = [NSString stringWithCString:processName encoding:NSUTF8StringEncoding];
@@ -89,6 +95,8 @@
     [super windowDidLoad];
     
     _processes = [ProcessSelectionWindowController getAllProcesses];
+    [_processTableView setTarget:self];
+    [_processTableView setDoubleAction:@selector(doubleClickProcessTable:)];
 }
 
 - (void) windowWillClose:(NSNotification *)notification {
@@ -114,6 +122,16 @@
     if (_processes != nil)
         return [_processes count];
     return 0;
+}
+
+- (void) doubleClickProcessTable:(id)sender {
+    NSInteger row = [_processTableView clickedRow];
+    if (row < 0 || row > [_processes count])
+        return;
+    
+    NSMutableDictionary *process = _processes[row];
+    NSLog(@"%@", process);
+    // TODO: Launch a scannerWindow to scan 'process'
 }
 
 @end

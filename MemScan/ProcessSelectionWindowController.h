@@ -28,4 +28,6 @@
 - (NSView *) tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
 - (NSInteger) numberOfRowsInTableView:(NSTableView *)tableView;
 
+- (void) doubleClickProcessTable:(id)sender;
+
 @end

@@ -103,7 +103,7 @@
 
 - (NSView *) tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     NSTableCellView *result = [tableView makeViewWithIdentifier:tableColumn.identifier owner:self];
-    NSString *resultString = @"";
+    NSString *resultString = nil;
     resultString = [NSString stringWithFormat:@"%@", [[_processes objectAtIndex:row] valueForKey:tableColumn.identifier]];
     
     result.textField.stringValue = resultString;

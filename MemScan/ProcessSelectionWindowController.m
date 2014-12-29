@@ -85,18 +85,21 @@
     return processes;
 }
 
+- (void) setDelegate:(id<ProcessSelectionDelegate>)delegate {
+    _delegate = delegate;
+}
+
 - (void) initiateWindowAction {
     [self.window makeKeyAndOrderFront:nil];
     [self reloadProcessTableData:nil];
 }
 
-// This is invoked when the window this controller is controlling has been loaded from its nib
 - (void)windowDidLoad {
     [super windowDidLoad];
     
     _processes = [ProcessSelectionWindowController getAllProcesses];
     [_processTableView setTarget:self];
-    [_processTableView setDoubleAction:@selector(doubleClickProcessTable:)];
+    [_processTableView setDoubleAction:@selector(selectProcess:)];
 }
 
 - (void) windowWillClose:(NSNotification *)notification {
@@ -124,14 +127,15 @@
     return 0;
 }
 
-- (void) doubleClickProcessTable:(id)sender {
+- (IBAction) selectProcess:(id)sender {
     NSInteger row = [_processTableView clickedRow];
+    if (row == -1)
+        row = [_processTableView selectedRow];
+    
     if (row < 0 || row > [_processes count])
         return;
     
-    NSMutableDictionary *process = _processes[row];
-    NSLog(@"%@", process);
-    // TODO: Launch a scannerWindow to scan 'process'
+    [_delegate processSelected:_processes[row]];
 }
 
 @end

@@ -20,6 +20,7 @@
 - (void) dealloc;
 
 - (void) throwFatalError:(NSString *)message;
+- (void) handleKernReturn:(kern_return_t)error forFunction:(NSString *)function;
 - (void) setProcess:(NSDictionary *)process;
 - (void) initiateWindowAction;
 - (void) windowDidLoad;

@@ -38,6 +38,14 @@
     // [self.window close];
 }
 
+- (void) handleKernReturn:(kern_return_t)error forFunction:(NSString *)function {
+    if (error != KERN_SUCCESS) {
+        NSString *message = [NSString stringWithFormat:@"%@ failed with message %d: %s",
+                             function, error, mach_error_string(error)];
+        [self throwFatalError:message];
+    }
+}
+
 - (void) setProcess:(NSDictionary *)process {
     _process = [process retain];
     [self updateLabels];
@@ -71,49 +79,26 @@
     
     // TODO: Give the application some mechanism for requesting privs to see processes (rather than having to run as 'sudo')
     
-    {
-        kern_return_t error = task_for_pid(mach_task_self(), (int)pid, &_task);
-        if (error != KERN_SUCCESS) {
-            [self throwFatalError:[NSString stringWithFormat:@"task_for_pid failed with message %d: %s",
-                                   error, mach_error_string(error)]];
-        }
-    }
-    
+    [self handleKernReturn:task_for_pid(mach_task_self(), (int)pid, &_task) forFunction:@"task_for_pid"];
     
     vm_address_t base;
     struct mach_header_64 header;
-    {
-        // TODO: Modularise this kern_return_t error handling procedure
-        kern_return_t error = find_primary_binary_location(_task, &base, &header);
-        if (error != KERN_SUCCESS)
-            [self throwFatalError:@"find_primary_binary_location"];
-    }
+    [self handleKernReturn:find_primary_binary_location(_task, &base, &header) forFunction:@"find_primary_binary_location"];
     
     vm_address_t aslr_slide;
-    {
-        kern_return_t error = get_aslr_slide(_task, header, base, &aslr_slide);
-        if (error != KERN_SUCCESS)
-            [self throwFatalError:@"get_aslr_slide"];
-    }
+    [self handleKernReturn:get_aslr_slide(_task, header, base, &aslr_slide) forFunction:@"get_aslr_slide"];
     
     struct segment_command_64 segment;
-    {
-        kern_return_t error = get_first_segment_with_name(_task, header, base, "__LINKEDIT", &segment);
-        if (error != KERN_SUCCESS)
-            [self throwFatalError:@"get_first_segment_with_name"];
-    }
+    [self handleKernReturn:get_first_segment_with_name(_task, header, base, "__LINKEDIT", &segment)
+                 forFunction:@"get_first_segment_with_name"];
     
     unsigned char data[100] = {0};
     vm_size_t bytes_read;
-    {
-        kern_return_t error = vm_read_overwrite(_task, aslr_slide + segment.vmaddr, 100, (vm_address_t)&data, &bytes_read);
-        if (error != KERN_SUCCESS)
-            [self throwFatalError:@"vm_read_overwrite"];
-    }
+    [self handleKernReturn:vm_read_overwrite(_task, aslr_slide + segment.vmaddr, 100, (vm_address_t)&data, &bytes_read)
+                 forFunction:@"vm_read_overwrite"];
     
-    for (vm_size_t i = 0; i < 100; ++i) {
+    for (vm_size_t i = 0; i < 100; ++i)
         printf("%02x", (int)data[i]);
-    }
 }
 
 @end

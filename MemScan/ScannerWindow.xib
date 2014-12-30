@@ -107,6 +107,9 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="initiateScan:" target="-2" id="ZuL-3y-azt"/>
+                        </connections>
                     </button>
                     <splitView dividerStyle="paneSplitter" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nEf-9j-aF5">
                         <rect key="frame" x="0.0" y="0.0" width="540" height="433"/>
@@ -311,7 +314,7 @@
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
-                                                <tableColumn width="82" minWidth="40" maxWidth="1000" id="Mmr-zh-yNM">
+                                                <tableColumn width="81.5" minWidth="40" maxWidth="1000" id="Mmr-zh-yNM">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -325,7 +328,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="QDq-c1-W3M">
-                                                            <rect key="frame" x="253.5" y="1" width="82" height="34"/>
+                                                            <rect key="frame" x="253.5" y="1" width="81" height="34"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6b5-UV-NZ0">
@@ -348,7 +351,7 @@
                                     </subviews>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </clipView>
-                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="ptp-SY-gs2">
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="ptp-SY-gs2">
                                     <rect key="frame" x="1" y="117.99574261903763" width="238" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>

@@ -10,16 +10,21 @@
 
 @interface ScannerWindowController : NSWindowController
 {
+             task_t       _task;
              NSDictionary *_process;
+    IBOutlet NSButton     *_scanButton;
     IBOutlet NSTextField  *_processLabel;
 }
 
 - (id) init;
 - (void) dealloc;
 
+- (void) throwFatalError:(NSString *)message;
 - (void) setProcess:(NSDictionary *)process;
 - (void) initiateWindowAction;
 - (void) windowDidLoad;
 - (void) windowWillClose:(NSNotification *)notification;
+
+- (IBAction) initiateScan:(id)sender;
 
 @end

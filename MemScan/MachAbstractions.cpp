@@ -110,3 +110,32 @@ kern_return_t get_aslr_slide(task_t task,
     
     return error;
 }
+
+kern_return_t search_for_bytes_in_buffer(unsigned char *needle, size_t needlesize,
+                                         unsigned char *buffer, size_t buffersize,
+                                         vm_address_t **results_out, size_t *number_of_results_out)
+{
+    vm_address_t *&results = *results_out;
+    size_t &number_of_results = *number_of_results_out;
+    
+    // TODO: Improve the memory management model here, don't limit to 100, etc.
+    results = (vm_address_t *)malloc(sizeof(vm_address_t) * 100);
+    if (results == NULL)
+        return KERN_RESOURCE_SHORTAGE;
+    number_of_results = 0;
+    
+    // TODO: Improve searching algorithm (Boyer-Moore?)
+    for (size_t i = 0; i < buffersize; ++i) {
+        bool match = true;
+        
+        for (size_t j = 0; j < needlesize; ++j) {
+            if (i + j > buffersize || needle[j] != buffer[i + j])
+                match = false;
+        }
+        
+        if (match && number_of_results < 100)
+            results[number_of_results++] = i;
+    }
+    
+    return KERN_SUCCESS;
+}

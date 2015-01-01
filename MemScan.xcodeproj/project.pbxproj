@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		615B94491A52292D000E4FA9 /* MachAbstractions.c in Sources */ = {isa = PBXBuildFile; fileRef = 615B94481A52292D000E4FA9 /* MachAbstractions.c */; };
+		615B94491A52292D000E4FA9 /* MachAbstractions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 615B94481A52292D000E4FA9 /* MachAbstractions.cpp */; };
 		D81E2FDC1A4CB6010005837E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E2FDB1A4CB6010005837E /* AppDelegate.m */; };
 		D81E2FDE1A4CB6010005837E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E2FDD1A4CB6010005837E /* main.m */; };
 		D81E2FE01A4CB6010005837E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D81E2FDF1A4CB6010005837E /* Images.xcassets */; };
@@ -19,7 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		615B94481A52292D000E4FA9 /* MachAbstractions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = MachAbstractions.c; sourceTree = "<group>"; };
+		615B94481A52292D000E4FA9 /* MachAbstractions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MachAbstractions.cpp; sourceTree = "<group>"; };
 		615B944B1A522D79000E4FA9 /* MachAbstractions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MachAbstractions.h; sourceTree = "<group>"; };
 		D81E2FD51A4CB6010005837E /* MemScan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemScan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D81E2FD91A4CB6010005837E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -33,7 +33,7 @@
 		D8A1B08B1A506C56009BA297 /* ProcessSelectionWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcessSelectionWindowController.h; sourceTree = "<group>"; };
 		D8A1B08C1A506C56009BA297 /* ProcessSelectionWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcessSelectionWindowController.m; sourceTree = "<group>"; };
 		D8A1B08E1A506CAC009BA297 /* ScannerWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScannerWindowController.h; sourceTree = "<group>"; };
-		D8A1B08F1A506CAC009BA297 /* ScannerWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScannerWindowController.m; sourceTree = "<group>"; };
+		D8A1B08F1A506CAC009BA297 /* ScannerWindowController.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = ScannerWindowController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +75,7 @@
 				D8A1B08C1A506C56009BA297 /* ProcessSelectionWindowController.m */,
 				D8A1B08E1A506CAC009BA297 /* ScannerWindowController.h */,
 				D8A1B08F1A506CAC009BA297 /* ScannerWindowController.m */,
-				615B94481A52292D000E4FA9 /* MachAbstractions.c */,
+				615B94481A52292D000E4FA9 /* MachAbstractions.cpp */,
 				615B944B1A522D79000E4FA9 /* MachAbstractions.h */,
 			);
 			path = MemScan;
@@ -173,7 +173,7 @@
 			files = (
 				D8A1B08D1A506C56009BA297 /* ProcessSelectionWindowController.m in Sources */,
 				D81E2FDE1A4CB6010005837E /* main.m in Sources */,
-				615B94491A52292D000E4FA9 /* MachAbstractions.c in Sources */,
+				615B94491A52292D000E4FA9 /* MachAbstractions.cpp in Sources */,
 				D8A1B0901A506CAC009BA297 /* ScannerWindowController.m in Sources */,
 				D81E2FDC1A4CB6010005837E /* AppDelegate.m in Sources */,
 			);

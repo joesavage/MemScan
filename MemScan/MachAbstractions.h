@@ -32,4 +32,8 @@ kern_return_t get_aslr_slide(task_t task,
                              vm_address_t base,
                              vm_address_t *aslr_slide);
 
+kern_return_t search_for_bytes_in_buffer(unsigned char *needle, size_t needlesize,
+                                         unsigned char *buffer, size_t buffersize,
+                                         vm_address_t **results_out, size_t *number_of_results_out);
+
 #endif

@@ -81,24 +81,62 @@
     
     [self handleKernReturn:task_for_pid(mach_task_self(), (int)pid, &_task) forFunction:@"task_for_pid"];
     
-    vm_address_t base;
-    struct mach_header_64 header;
-    [self handleKernReturn:find_primary_binary_location(_task, &base, &header) forFunction:@"find_primary_binary_location"];
-    
-    vm_address_t aslr_slide;
-    [self handleKernReturn:get_aslr_slide(_task, header, base, &aslr_slide) forFunction:@"get_aslr_slide"];
-    
-    struct segment_command_64 segment;
-    [self handleKernReturn:get_first_segment_with_name(_task, header, base, "__LINKEDIT", &segment)
-                 forFunction:@"get_first_segment_with_name"];
-    
-    unsigned char data[100] = {0};
-    vm_size_t bytes_read;
-    [self handleKernReturn:vm_read_overwrite(_task, aslr_slide + segment.vmaddr, 100, (vm_address_t)&data, &bytes_read)
-                 forFunction:@"vm_read_overwrite"];
-    
-    for (vm_size_t i = 0; i < 100; ++i)
-        printf("%02x", (int)data[i]);
+    {
+        vm_address_t addr = 0x00;
+        unsigned int buffsize = 128 * getpagesize();
+        unsigned char *buffer = (unsigned char *)malloc(buffsize);
+        while (true) {
+            vm_region_basic_info_data_64_t info;
+            mach_msg_type_number_t count = VM_REGION_BASIC_INFO_COUNT_64;
+            vm_size_t size;
+            mach_port_t object_name;
+            kern_return_t error = vm_region_64(_task, &addr, &size, VM_REGION_BASIC_INFO, (vm_region_info_t)&info, &count, &object_name);
+            if (error != KERN_SUCCESS)
+                break;
+            
+            // Scan from 'addr' to 'addr + size'
+            vm_address_t destination = addr + size;
+            while (addr < destination) {
+                vm_size_t chunksize = buffsize;
+                if (destination - addr < chunksize)
+                    chunksize = destination - addr;
+                
+                vm_size_t bytes_read = 0;
+                kern_return_t error = vm_read_overwrite(_task, addr, chunksize, (vm_address_t)buffer, &bytes_read);
+                if (error == KERN_PROTECTION_FAILURE || error == KERN_INVALID_ADDRESS)
+                    goto step;
+                else
+                    [self handleKernReturn:error forFunction:@"vm_read_overwrite"];
+                
+                // NOTE: We currently don't scan for data spanning over chunk boundaries. If this becomes an issue, you can
+                // simply create a buffer storing the N-1 bytes from the last chunk, and include those in the scan process.
+                
+                // TODO: Would be good to move this in-loop allocation outside the loop (to a memory block with a default large size
+                // that increases only if required)
+                {
+                    unsigned char needle[] = "\x5f\x5f\x74\x65"; // TODO: Set properly
+                    unsigned int needlesize = 4;
+                    vm_address_t *results = NULL;
+                    size_t number_of_results = 0;
+                    search_for_bytes_in_buffer(needle, needlesize, buffer, bytes_read, &results, &number_of_results);
+                    
+                    for (unsigned long i = 0; i < number_of_results; ++i)
+                        printf("%08lx\n", addr + results[i]);
+                    
+                    free(results);
+                }
+                
+                // TODO: Could print information about the region in which the data was found, etc.
+                
+            step:
+                addr += chunksize;
+            }
+            
+            if (addr == 0)
+                break;
+        }
+        free(buffer);
+    }
 }
 
 @end

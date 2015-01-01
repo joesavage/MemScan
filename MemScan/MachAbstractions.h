@@ -12,16 +12,24 @@
 #include <mach/mach.h>
 #include <mach-o/loader.h>
 
+// TODO: Remove this 'math.h' dependency
+#include <math.h>
+
 #ifndef MemScan_MachAbstractions_h
 #define MemScan_MachAbstractions_h
+
+#define BOYER_MOORE_ALLOCATION_ALIGNMENT 128
 
 kern_return_t find_primary_binary_location(task_t task,
                                            vm_address_t *address_output,
                                            struct mach_header_64 *header_output);
-kern_return_t get_load_commands_on_heap(task_t task,
-                                        struct mach_header_64 header,
-                                        vm_address_t addr,
-                                        unsigned char **address_output);
+
+// NOTE: This allocates on the heap and the caller should free the memory
+kern_return_t get_load_commands(task_t task,
+                                struct mach_header_64 header,
+                                vm_address_t addr,
+                                unsigned char **address_output);
+
 kern_return_t get_first_segment_with_name(task_t task,
                                           struct mach_header_64 header,
                                           vm_address_t base,
@@ -32,8 +40,14 @@ kern_return_t get_aslr_slide(task_t task,
                              vm_address_t base,
                              vm_address_t *aslr_slide);
 
-kern_return_t search_for_bytes_in_buffer(unsigned char *needle, size_t needlesize,
-                                         unsigned char *buffer, size_t buffersize,
-                                         vm_address_t **results_out, size_t *number_of_results_out);
+int boyer_moore(unsigned char *haystack, size_t haystack_length,
+                unsigned char *needle, size_t needle_length,
+                vm_address_t **results_out, size_t *results_length_out);
+
+// NOTE: This allocates on the heap and the caller should free the memory
+kern_return_t search_task_memory(task_t task,
+                                 vm_address_t address,
+                                 unsigned char *needle,
+                                 size_t needle_length);
 
 #endif

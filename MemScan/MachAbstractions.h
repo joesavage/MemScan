@@ -40,6 +40,13 @@ kern_return_t get_aslr_slide(task_t task,
                              vm_address_t base,
                              vm_address_t *aslr_slide);
 
+int generate_boyer_moore_skip_table(unsigned char *needle, size_t needle_length, size_t *skip_table_out);
+
+// NOTE: This can allocate on the heap and the caller should free the memory
+int boyer_moore(unsigned char *haystack, size_t haystack_length,
+                unsigned char *needle, size_t needle_length, size_t *skip_table,
+                vm_address_t **results_out, size_t *results_length_out);
+
 // NOTE: This can allocate on the heap and the caller should free the memory
 int boyer_moore(unsigned char *haystack, size_t haystack_length,
                 unsigned char *needle, size_t needle_length,

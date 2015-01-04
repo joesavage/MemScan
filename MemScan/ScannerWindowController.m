@@ -77,6 +77,10 @@
                             forNeedle:(unsigned char *)needle
                            withLength:(size_t)needle_length
 {
+    size_t skip_table[256] = {};
+    if (!generate_boyer_moore_skip_table(needle, needle_length, skip_table))
+        return KERN_SUCCESS;
+    
     // TODO: malloc can fail
     size_t buffsize = 128 * getpagesize();
     unsigned char *buffer = (unsigned char *)malloc(buffsize);
@@ -108,10 +112,9 @@
                 // NOTE: We currently don't scan for data spanning over chunk boundaries. If this becomes an issue, you can
                 // simply create a buffer storing the N-1 bytes from the last chunk, and include those in the scan process.
                 
-                // TODO: Pre-process needle into a skip table (/struct) only once (not for every chunk search)
                 size_t results_length = transient_data_size;
                 if (boyer_moore((unsigned char *)buffer, bytes_read,
-                                (unsigned char *)needle, needle_length,
+                                (unsigned char *)needle, needle_length, skip_table,
                                 &transient_data, &results_length))
                 {
                     if (results_length > transient_data_size) {

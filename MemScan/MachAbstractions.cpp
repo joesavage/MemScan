@@ -111,8 +111,20 @@ kern_return_t get_aslr_slide(task_t task,
     return error;
 }
 
+int generate_boyer_moore_skip_table(unsigned char *needle, size_t needle_length, size_t *skip_table_out) {
+    if (needle == NULL || needle_length == 0)
+        return 0;
+    
+    for (size_t i = 0; i < 256; ++i)
+        skip_table_out[i] = needle_length;
+    for (size_t i = 0; i < needle_length - 1; ++i)
+        skip_table_out[needle[i]] = needle_length - (i + 1);
+    
+    return 1;
+}
+
 int boyer_moore(unsigned char *haystack, size_t haystack_length,
-                unsigned char *needle, size_t needle_length,
+                unsigned char *needle, size_t needle_length, size_t *skip_table,
                 vm_address_t **results_out, size_t *results_length_out)
 {
     vm_address_t *&results = *results_out;
@@ -121,8 +133,8 @@ int boyer_moore(unsigned char *haystack, size_t haystack_length,
     // NOTE: For now at least, this is Boyer-Moore-Horspool.
     // This can almost certainly be made more efficient if required.
     
-    if (haystack == NULL || haystack_length == 0 ||
-        needle == NULL   || needle_length == 0   ||
+    if (needle == NULL   || needle_length == 0   ||
+        haystack == NULL || haystack_length == 0 ||
         needle_length > haystack_length)
         return 0;
     
@@ -135,14 +147,6 @@ int boyer_moore(unsigned char *haystack, size_t haystack_length,
         results_size = results_length;
     }
     
-    // Preprocess the needle into a skip table for faster searching
-    size_t skip_table[256] = {};
-    for (size_t i = 0; i < sizeof(skip_table) / sizeof(size_t); ++i)
-        skip_table[i] = needle_length;
-    for (size_t i = 0; i < needle_length - 1; ++i)
-        skip_table[needle[i]] = needle_length - (i + 1);
-    
-    // Actually perform the search!
     unsigned char *search = haystack;
     size_t number_of_results = 0;
     while (search + needle_length <= haystack + haystack_length) {
@@ -179,5 +183,18 @@ int boyer_moore(unsigned char *haystack, size_t haystack_length,
     
     results_length = number_of_results;
     return number_of_results > 0;
+}
+
+int boyer_moore(unsigned char *haystack, size_t haystack_length,
+                unsigned char *needle, size_t needle_length,
+                vm_address_t **results_out, size_t *results_length_out)
+{
+    // Preprocess the needle into a skip table for faster searching
+    size_t skip_table[256] = {};
+    if (!generate_boyer_moore_skip_table(needle, needle_length, skip_table))
+        return 0;
+    
+    // Actually perform the search!
+    return boyer_moore(haystack, haystack_length, needle, needle_length, skip_table, results_out, results_length_out);
 }
 

@@ -72,6 +72,71 @@
     _process = nil;
 }
 
+- (kern_return_t) searchProcessMemory:(task_t)task
+                                 from:(vm_address_t)address
+                            forNeedle:(unsigned char *)needle
+                           withLength:(size_t)needle_length
+{
+    // TODO: malloc can fail
+    size_t buffsize = 128 * getpagesize();
+    unsigned char *buffer = (unsigned char *)malloc(buffsize);
+    size_t transient_data_size = 256;
+    size_t *transient_data = (size_t *)malloc(sizeof(size_t) * transient_data_size);
+    while (true) {
+        vm_region_basic_info_data_64_t info;
+        mach_msg_type_number_t count = VM_REGION_BASIC_INFO_COUNT_64;
+        vm_size_t size;
+        mach_port_t object_name;
+        kern_return_t error = vm_region_64(task, &address, &size,
+                                           VM_REGION_BASIC_INFO, (vm_region_info_t)&info, &count, &object_name);
+        if (error != KERN_SUCCESS)
+            break;
+        
+        // Scan from 'addr' to 'address + size'
+        vm_address_t destination = address + size;
+        while (address < destination) {
+            vm_size_t chunksize = buffsize;
+            if (destination - address < chunksize)
+                chunksize = destination - address;
+            
+            vm_size_t bytes_read = 0;
+            kern_return_t error = vm_read_overwrite(task, address, chunksize, (vm_address_t)buffer, &bytes_read);
+            if (error != KERN_PROTECTION_FAILURE && error != KERN_INVALID_ADDRESS) {
+                if (error != KERN_SUCCESS)
+                    return error;
+                
+                // NOTE: We currently don't scan for data spanning over chunk boundaries. If this becomes an issue, you can
+                // simply create a buffer storing the N-1 bytes from the last chunk, and include those in the scan process.
+                
+                // TODO: Pre-process needle into a skip table (/struct) only once (not for every chunk search)
+                size_t results_length = transient_data_size;
+                if (boyer_moore((unsigned char *)buffer, bytes_read,
+                                (unsigned char *)needle, needle_length,
+                                &transient_data, &results_length))
+                {
+                    if (results_length > transient_data_size) {
+                        size_t blocks_allocated = floorl(((double)results_length / BOYER_MOORE_ALLOCATION_ALIGNMENT) + 0.5);
+                        transient_data_size = BOYER_MOORE_ALLOCATION_ALIGNMENT * blocks_allocated;
+                    }
+                    
+                    // Perform the intended operations on these set of results
+                    for (size_t i = 0; i < results_length; ++i)
+                        printf("%08lx\n", address + transient_data[i]);
+                }
+            }
+            
+            address += chunksize;
+        }
+        
+        if (address == 0)
+            break;
+    }
+    free(transient_data);
+    free(buffer);
+    
+    return KERN_SUCCESS;
+}
+
 - (IBAction) initiateScan:(id)sender {
     NSInteger pid = [[_process objectForKey:@"pid"] integerValue];
     if (pid > INT_MAX)
@@ -83,7 +148,7 @@
     
     unsigned char needle[] = "\x5f\x5f\x74\x65";
     unsigned int needle_length = 4;
-    search_task_memory(_task, 0x00, needle, needle_length);
+    [self searchProcessMemory:_task from:0x00 forNeedle:needle withLength:needle_length];
 }
 
 @end

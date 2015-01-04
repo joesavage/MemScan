@@ -40,14 +40,9 @@ kern_return_t get_aslr_slide(task_t task,
                              vm_address_t base,
                              vm_address_t *aslr_slide);
 
+// NOTE: This can allocate on the heap and the caller should free the memory
 int boyer_moore(unsigned char *haystack, size_t haystack_length,
                 unsigned char *needle, size_t needle_length,
                 vm_address_t **results_out, size_t *results_length_out);
-
-// NOTE: This allocates on the heap and the caller should free the memory
-kern_return_t search_task_memory(task_t task,
-                                 vm_address_t address,
-                                 unsigned char *needle,
-                                 size_t needle_length);
 
 #endif

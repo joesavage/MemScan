@@ -14,6 +14,8 @@
              NSDictionary *_process;
     IBOutlet NSButton     *_scanButton;
     IBOutlet NSTextField  *_processLabel;
+    IBOutlet NSComboBox   *_scanTypeComboBox;
+    IBOutlet NSComboBox   *_dataTypeComboBox;
 }
 
 - (id) init;

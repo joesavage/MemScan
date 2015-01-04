@@ -64,6 +64,8 @@
     [super windowDidLoad];
     
     _task = 0;
+    [_scanTypeComboBox addItemsWithObjectValues:@[@"Exact Value", @"Value Greater Than", @"Value Less Than", @"Unknown Initial Value"]];
+    [_dataTypeComboBox addItemsWithObjectValues:@[@"1 Byte", @"2 Byte", @"4 Byte", @"8 Byte", @"Float", @"Double", @"All Numerical Types", @"Binary", @"Hex", @"String"]];
     [self updateLabels];
 }
 

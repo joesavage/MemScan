@@ -12,9 +12,6 @@
 #include <mach/mach.h>
 #include <mach-o/loader.h>
 
-// TODO: Remove this 'math.h' dependency
-#include <math.h>
-
 #ifndef MemScan_MachAbstractions_h
 #define MemScan_MachAbstractions_h
 

@@ -81,11 +81,13 @@
     if (!generate_boyer_moore_skip_table(needle, needle_length, skip_table))
         return KERN_SUCCESS;
     
-    // TODO: malloc can fail
     size_t buffsize = 128 * getpagesize();
     unsigned char *buffer = (unsigned char *)malloc(buffsize);
     size_t transient_data_size = 256;
     size_t *transient_data = (size_t *)malloc(sizeof(size_t) * transient_data_size);
+    if (buffer == NULL || transient_data == NULL)
+        return KERN_RESOURCE_SHORTAGE;
+    
     while (true) {
         vm_region_basic_info_data_64_t info;
         mach_msg_type_number_t count = VM_REGION_BASIC_INFO_COUNT_64;

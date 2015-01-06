@@ -15,6 +15,7 @@
     self = [super initWithWindowNibName:@"ScannerWindow"];
     if (self) {
         _process = nil;
+        _scanResults = nil;
     }
     
     return self;
@@ -22,6 +23,7 @@
 
 - (void) dealloc {
     [_process release];
+    [_scanResults release];
     
     [super dealloc];
 }
@@ -51,7 +53,7 @@
     [self updateLabels];
 }
 
-- (void) updateLabels {
+- (void) updateLabels { // TODO: Rename or remove? This only updates one label right now!
     NSString *pidString = [NSString stringWithFormat:@"%@ (%@)", [_process objectForKey:@"pid"], [_process objectForKey:@"name"]];
     [_processLabel setStringValue:pidString];
 }
@@ -72,6 +74,8 @@
 - (void) windowWillClose:(NSNotification *)notification {
     [_process release];
     _process = nil;
+    [_scanResults release];
+    _scanResults = nil;
 }
 
 - (kern_return_t) searchProcessMemory:(task_t)task
@@ -82,6 +86,15 @@
     size_t skip_table[256] = {};
     if (!generate_boyer_moore_skip_table(needle, needle_length, skip_table))
         return KERN_SUCCESS;
+    
+    // TOOD: Check if NSMutableArray is suitable here.
+    [_scanResults release];
+    _scanResults = nil;
+    _scanResults = [[NSMutableArray alloc] initWithCapacity:4096]; // TODO: Tweak this number?
+    
+    size_t minimum_address = SIZE_MAX;
+    size_t maximum_address = 0;
+    size_t result_count = 0;
     
     size_t buffsize = 128 * getpagesize();
     unsigned char *buffer = (unsigned char *)malloc(buffsize);
@@ -126,9 +139,27 @@
                         transient_data_size = BOYER_MOORE_ALLOCATION_ALIGNMENT * blocks_allocated;
                     }
                     
+                    // TODO: Update the NSProgressIndicator
+                    result_count += results_length;
+                    
                     // Perform the intended operations on these set of results
-                    for (size_t i = 0; i < results_length; ++i)
-                        printf("%08lx\n", address + transient_data[i]);
+                    for (size_t i = 0; i < results_length; ++i) {
+                        size_t result_address = address + transient_data[i];
+                        
+                        // TODO: The NSMutableArray is a complete performance trainwreck. Do something about it.
+                        // TODO: I'm worried about the NSDictionaries here too.
+                        // TODO: The 'value' should probably (almost certainly) be more than just a single unsigned char
+                        [_scanResults addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                 [NSNumber numberWithLongLong:(result_address)], @"address",
+                                                 [NSNumber numberWithLongLong:*(buffer + transient_data[i])], @"value",
+                                                 nil]];
+                        // printf("%08lx\n", address + transient_data[i]);
+                        
+                        if (address + transient_data[i] < minimum_address)
+                            minimum_address = result_address;
+                        if (address + transient_data[i] > maximum_address)
+                            maximum_address = result_address;
+                    }
                 }
             }
             
@@ -140,6 +171,14 @@
     }
     free(transient_data);
     free(buffer);
+    
+    // TODO: Should these live in here? I'm not sure.
+    NSString *resultRangeString = nil;
+    resultRangeString = result_count == 0 ? @"N/A"
+                                          : [NSString stringWithFormat:@"%08lx - %08lx", minimum_address, maximum_address];
+    [_resultRangeLabel setStringValue:resultRangeString];
+    [_numberOfResultsLabel setStringValue:[NSString stringWithFormat:@"%lu", [_scanResults count]]];
+    [_resultsTableView reloadData];
     
     return KERN_SUCCESS;
 }
@@ -153,9 +192,36 @@
     
     [self handleKernReturn:task_for_pid(mach_task_self(), (int)pid, &_task) forFunction:@"task_for_pid"];
     
+    // TODO: Add scan state (first scan, next scan, etc.)
+    
+    // TODO: Scan for the specified value rather than this constant
     unsigned char needle[] = "\x5f\x5f\x74\x65";
     unsigned int needle_length = 4;
     [self searchProcessMemory:_task from:0x00 forNeedle:needle withLength:needle_length];
+}
+
+- (NSView *) tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+    NSTableCellView *result = [tableView makeViewWithIdentifier:tableColumn.identifier owner:self];
+    NSString *resultString = nil;
+    
+    if ([tableColumn.identifier isEqualToString:@"address"]) {
+        size_t address = [[[_scanResults objectAtIndex:row] objectForKey:@"address"] integerValue];
+        resultString = [NSString stringWithFormat:@"%08lx", address];
+    } else if ([tableColumn.identifier isEqualToString:@"value"]) {
+        // TODO: Deal with typing this properly
+        // TODO: These values probably should probably update and not stay around to get stale!
+        unsigned char value = [[[_scanResults objectAtIndex:row] objectForKey:@"value"] integerValue];
+        resultString = [NSString stringWithFormat:@"%d", (int)value];
+    }
+    
+    result.textField.stringValue = resultString;
+    return result;
+}
+
+- (NSInteger) numberOfRowsInTableView:(NSTableView *)tableView {
+    if (_scanResults != nil)
+        return [_scanResults count];
+    return 0;
 }
 
 @end

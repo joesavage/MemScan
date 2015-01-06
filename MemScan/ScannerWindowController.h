@@ -8,14 +8,19 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface ScannerWindowController : NSWindowController
+@interface ScannerWindowController : NSWindowController <NSTableViewDelegate, NSTableViewDataSource>
 {
-             task_t       _task;
-             NSDictionary *_process;
-    IBOutlet NSButton     *_scanButton;
-    IBOutlet NSTextField  *_processLabel;
-    IBOutlet NSComboBox   *_scanTypeComboBox;
-    IBOutlet NSComboBox   *_dataTypeComboBox;
+             task_t         _task;
+             NSDictionary   *_process;
+             NSMutableArray *_scanResults;
+    IBOutlet NSButton       *_scanButton;
+    IBOutlet NSTextField    *_processLabel;
+    IBOutlet NSTextField    *_numberOfResultsLabel;
+    IBOutlet NSTextField    *_resultRangeLabel;
+    IBOutlet NSComboBox     *_scanTypeComboBox;
+    IBOutlet NSComboBox     *_dataTypeComboBox;
+    IBOutlet NSTableView    *_resultsTableView;
+    IBOutlet NSTableView    *_savedAddressTableView;
 }
 
 - (id) init;
@@ -29,5 +34,8 @@
 - (void) windowWillClose:(NSNotification *)notification;
 
 - (IBAction) initiateScan:(id)sender;
+
+- (NSView *) tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
+- (NSInteger) numberOfRowsInTableView:(NSTableView *)tableView;
 
 @end

@@ -28,7 +28,7 @@
 		D81E2FDD1A4CB6010005837E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D81E2FDF1A4CB6010005837E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D81E2FE21A4CB6010005837E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		D8A1B0871A5067B4009BA297 /* ProcessSelectionWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProcessSelectionWindow.xib; path = ../ProcessSelectionWindow.xib; sourceTree = "<group>"; };
+		D8A1B0871A5067B4009BA297 /* ProcessSelectionWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProcessSelectionWindow.xib; sourceTree = "<group>"; };
 		D8A1B0891A5067C3009BA297 /* ScannerWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScannerWindow.xib; sourceTree = "<group>"; };
 		D8A1B08B1A506C56009BA297 /* ProcessSelectionWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcessSelectionWindowController.h; sourceTree = "<group>"; };
 		D8A1B08C1A506C56009BA297 /* ProcessSelectionWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcessSelectionWindowController.m; sourceTree = "<group>"; };

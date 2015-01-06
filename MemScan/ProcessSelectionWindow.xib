@@ -50,11 +50,11 @@
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
                                                 <tableCellView identifier="pid" id="fUe-Ft-Nzu">
-                                                    <rect key="frame" x="1" y="1" width="42.5" height="17"/>
+                                                    <rect key="frame" x="1" y="1" width="42" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="U8t-TU-gz4">
-                                                            <rect key="frame" x="0.0" y="0.0" width="42" height="17"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="41.5" height="17"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="right" title="0000" id="rK1-pC-Kcb">
                                                                 <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -124,11 +124,11 @@
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
                                                 <tableCellView identifier="name" id="rdX-cc-LoT">
-                                                    <rect key="frame" x="105.5" y="1" width="330.5" height="17"/>
+                                                    <rect key="frame" x="105.5" y="1" width="330" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="IQG-tp-jRI">
-                                                            <rect key="frame" x="0.0" y="0.0" width="330" height="17"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="329.5" height="17"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="N/A" usesSingleLineMode="YES" id="BKT-xp-7Wx">
                                                                 <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>

@@ -202,6 +202,7 @@
         [self throwFatalError:@"Invalid PID specified."];
     
     // TODO: Give the application some mechanism for requesting privs to see processes (rather than having to run as 'sudo')
+    // [Plan: Create privileged helper application via SMJobBless, communicating through XPC.]
     
     [self handleKernReturn:task_for_pid(mach_task_self(), (int)pid, &_task) forFunction:@"task_for_pid"];
     

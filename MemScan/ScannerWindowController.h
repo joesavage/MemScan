@@ -8,11 +8,22 @@
 
 #import <Cocoa/Cocoa.h>
 
+struct ScanResult {
+    size_t address;
+    unsigned char value[8];
+};
+
+struct ScanResults {
+    struct ScanResult *results;
+    size_t size;
+    size_t count;
+};
+
 @interface ScannerWindowController : NSWindowController <NSTableViewDelegate, NSTableViewDataSource>
 {
              task_t         _task;
              NSDictionary   *_process;
-             NSMutableArray *_scanResults;
+      struct ScanResults    _scanResults;
     IBOutlet NSButton       *_scanButton;
     IBOutlet NSTextField    *_processLabel;
     IBOutlet NSTextField    *_numberOfResultsLabel;
